@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.PromptChuay" parent="Theme.Material3.Light.NoActionBar">
+        <item name="fontFamily">@font/sarabun</item>
+        <item name="android:fontFamily">@font/sarabun</item>
+
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/red_600</item>
+        <item name="colorPrimaryVariant">@color/red_700</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">@color/blue_600</item>
+        <item name="colorSecondaryVariant">@color/blue_700</item>
+        <item name="colorOnSecondary">@android:color/white</item>
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/blue_700</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <!-- Background colors -->
+        <item name="android:windowBackground">@color/gray_50</item>
+        <item name="colorSurface">@android:color/white</item>
+        <item name="colorOnSurface">@color/gray_900</item>
+
+        <!-- Text colors -->
+        <item name="android:textColorPrimary">@color/gray_900</item>
+        <item name="android:textColorSecondary">@color/gray_600</item>
+
+        <!-- Button styles -->
+        <item name="materialButtonStyle">@style/Widget.PromptChuay.Button</item>
+        <item name="textInputStyle">@style/Widget.PromptChuay.TextInputLayout</item>
+    </style>
+
+    <!-- Button Style -->
+    <style name="Widget.PromptChuay.Button" parent="Widget.Material3.Button">
+        <item name="cornerRadius">8dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+    </style>
+
+    <!-- Text Input Style -->
+    <style name="Widget.PromptChuay.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">8dp</item>
+        <item name="boxCornerRadiusTopEnd">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+        <item name="boxStrokeColor">@color/gray_300</item>
+        <item name="hintTextColor">@color/gray_600</item>
+    </style>
+
+    <!-- Card Style -->
+    <style name="Widget.PromptChuay.Card" parent="Widget.Material3.CardView.Outlined">
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+</resources>

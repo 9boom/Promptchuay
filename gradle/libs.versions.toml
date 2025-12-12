@@ -1,0 +1,36 @@
+[versions]
+agp = "8.13.1"
+googleSevicesVersion = "4.4.4"
+junit = "4.13.2"
+junitVersion = "1.3.0"
+espressoCore = "3.7.0"
+appcompat = "1.7.1"
+material = "1.13.0"
+firebaseBom = "34.6.0"
+playServiceLocationVersion = "21.3.0"
+playServiceMapsVersioin = "19.2.0"
+constraintlayout = "2.2.1"
+navigationFragment = "2.9.6"
+navigationUi = "2.9.6"
+gsonVersion = '2.13.2'
+
+[libraries]
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore" }
+play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServiceLocationVersion" }
+play-services-maps = {group = "com.google.android.gms", name="play-services-maps", version.ref="playServiceMapsVersioin"}
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
+navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigationUi" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gsonVersion"}
+
+
+[plugins]
+google-services = { id = "com.google.gms.google-services", version.ref = "googleSevicesVersion" }
+android-application = { id = "com.android.application", version.ref = "agp" }

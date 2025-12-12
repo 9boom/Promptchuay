@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">พร้อมช่วย</string>
+    <!-- Mode Labels -->
+    <string name="victim_mode">โหมดผู้ประสบภัย</string>
+    <string name="rescuer_mode">โหมดกู้ภัย</string>
+
+    <!-- Connection Status -->
+    <string name="connection_online">เชื่อมต่ออินเทอร์เน็ต</string>
+    <string name="connection_offline">ไม่พบอินเทอร์เน็ต</string>
+    <string name="connection_online_desc">รายงาน SOS จะถูกส่งไปยังระบบทันที</string>
+    <string name="connection_offline_desc">ระบบจะทำการส่งแบบฟอร์มขอความช่วยเหลือนี้อัตโนมัติเมื่ออุปกรณ์นี้สามารถเชื่อมต่ออินเทอร์เน็ตได้</string>
+    <string name="test_offline">ทดสอบโหมดไม่มีอินเทอร์เน็ต</string>
+    <string name="back_online">กลับโหมดออนไลน์</string>
+    <string name="report_sent">สถานะรายงาน</string>
+    <string name="report_sent_desc">รายงานของคุณอยู่ในฐานข้อมูลคำขอช่วยเหลือแล้ว</string>
+    <string name="report_notsent">สถานะรายงาน</string>
+    <string name="report_notsent_desc">รายงานของคุณยังไม่ได้อยู่ฐานข้อมูลคำขอการช่วยเหลือ</string>
+
+    <!-- SOS Form -->
+    <string name="send_sos">สบันทึกและส่งรายงาน</string>
+    <string name="sos_report_form">รายงานขอความช่วยเหลือ</string>
+    <string name="full_name">ชื่อ-นามสกุล</string>
+    <string name="contact_info">ช่องทางติดต่อ</string>
+    <string name="contact_hint">เบอร์โทรศัพท์, LINE ID, etc.</string>
+    <string name="situation_details">รายละเอียดสถานการณ์</string>
+    <string name="get_location">ระบุตำแหน่งจาก GPS</string>
+    <string name="location_set">ขอตำแหน่งใหม่</string>
+    <string name="coordinates">พิกัด: %1$s, %2$s</string>
+    <string name="submit_sos">บันทึกและส่งรายงาน</string>
+
+    <!-- Rescuer Mode -->
+    <string name="rescuer_header">โหมดกู้ภัย</string>
+    <string name="rescuer_desc">รับข้อมูลรายงาน SOS แบบเรียลไทม์</string>
+    <string name="all_reports">รายงาน SOS ทั้งหมด (%1$d)</string>
+    <string name="status_waiting">รอความช่วยเหลือ</string>
+    <string name="contact_label">ติดต่อ: %1$s</string>
+    <string name="offline_queued">ระบบจะทำการส่งอัตโนมัติเมื่อมีสัญญาณอินเทอร์เน็ต</string>
+    <string name="view_on_map">ดูบนแผนที่</string>
+
+    <string name="alert_icon">Alert Icon</string>
+    <string name="im_recure">ฉันคือกู้ภัย</string>
+    <string name="im_victim">ฉันคือผู้ประสบภัย</string>
+    <string name="connection_status">Connection Status</string>
+    <string name="promptchuay">PromptChuay - พร้อมช่วย</string>
+    <string name="azure_pin_info">ฟ้า: ไม่ทราบ</string>
+    <string name="green_pin_info">เขียว (0): ไม่เร่งด่วน</string>
+    <string name="red_pin_info">แดง (0): อันตรายถึงชีวิต</string>
+    <string name="all_pins_info">จำนวนหมุดทั้งหมด: 0</string>
+    <string name="yellow_pin_color">เหลือง (0): เร่งด่วน</string>
+    <string name="users_icon">Users Icon</string>
+    <string name="recure_mode">โหมดกู้ภัย</string>
+    <string name="recure_info_1">รับข้อมูลรายงาน SOS แบบเรียลไทม์</string>
+    <string name="see_all_map_info">ดูแผนที่ทั้งหมด</string>
+    <string name="report_header_info">รายงาน SOS ทั้งหมด (2)</string>
+    <string name="sos_icon">SOS Icon</string>
+    <string name="large_button_hint_to_click">คลิก เพื่อกรอกรายงานขอความช่วยเหลือ พร้อมส่งพิกัด</string>
+    <string name="got_help_desc">ฉันได้รับความช่วยเหลือแล้ว</string>
+    <string name="connection_icon">Connection Icon</string>
+    <string name="connection_sent_icon">Connection Sent Icon</string>
+    <string name="card_online_desc">รายงาน SOS จะถูกส่งไปยังระบบทันที</string>
+    <string name="card_sent_isondb">รายงานของคุณอยู่ในฐานข้อมูลคำร้องแล้ว</string>
+    <string name="report_status">สถานะรายงาน</string>
+    <string name="internet_connect">เชื่อมต่ออินเทอร์เน็ต</string>
+    <string name="title_form">รายงานขอความช่วยเหลือ</string>
+    <string name="name_title">ชื่อ-นามสกุล</string>
+    <string name="contact_title">ช่องทางติดต่อ</string>
+    <string name="level_title">ระดับความรุนแรง</string>
+    <string name="type_title">ฉันอยู่ในสถานการณ์</string>
+    <string name="details_title">รายละเอียดสถานการณ์</string>
+    <string name="close_form">Close</string>
+    <string name="gps_gps">กดเพื่อรับตำแหน่งของคุณจาก GPS</string>
+    <string name="sos_submit_label">บันทึกและส่งรายงาน</string>
+    <string name="gps_position_info">พิกัด: 13.7563, 100.5018</string>
+    <string name="emergency_type_icon">Emergency Type Icon</string>
+    <string name="location_icon">Location Icon</string>
+    <string name="contact_icon">Contact Icon</string>
+    <string name="detail_item_report">รายละเอียด</string>
+    <string name="contact_item_report">081-234-5678</string>
+    <string name="detail_detail_item_report">ติดอยู่บนหลังคาบ้าน น้ำท่วมสูง ต้องการความช่วยเหลือด่วน</string>
+    <string name="see_on_map">ดูบนแผนที่</string>
+    <string name="level_example">ระดับวิกฤติ</string>
+    <string name="location_example">พิกัด: 13.7563, 100.5018</string>
+    <string name="name_example">สมชาย ใจดี</string>
+    <string name="status">รอความช่วยเหลือ</string>
+    <string name="time_example">10:30 น.</string>
+    <string name="type_example">น้ำท่วม 🌊</string>
+    <string name="total_pins_number">จำนวนผู้ประสบภัยทั้งหมด: %d</string>
+    <string name="total_green_pins">เขียว (%d): ไม่เร่งด่วน</string>
+    <string name="total_yellow_pins">เหลือง (%d): เร่งด่วน</string>
+    <string name="total_red_pins">แดง (%d): อันตรายถึงชีวิต</string>
+</resources>

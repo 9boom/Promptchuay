@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>                                           <!-- Primary Colors -->
+    <color name="red_600">#DC2626</color>
+    <color name="red_700">#B91C1C</color>
+    <color name="blue_600">#2563EB</color>
+    <color name="blue_700">#1D4ED8</color>
+    <color name="green_600">#059669</color>
+    <color name="green_700">#047857</color>
+    <!-- Background Colors -->
+    <color name="gray_50">#F9FAFB</color>
+    <color name="gray_100">#F3F4F6</color>
+    <color name="gray_200">#E5E7EB</color>
+
+    <!-- Text Colors -->
+    <color name="gray_900">#111827</color>
+    <color name="gray_700">#374151</color>
+    <color name="gray_600">#4B5563</color>
+    <color name="gray_500">#6B7280</color>
+    <color name="gray_400">#9CA3AF</color>
+    <color name="gray_800">#1F2937</color>
+    <color name="gray_300">#D1D5DB</color>
+
+    <!-- Status Colors -->
+    <color name="red_50">#FEF2F2</color>
+    <color name="red_100">#FEE2E2</color>
+    <color name="red_800">#991B1B</color>
+
+    <color name="blue_50">#EFF6FF</color>
+    <color name="blue_200">#BFDBFE</color>
+
+    <color name="green_50">#ECFDF5</color>
+    <color name="green_200">#A7F3D0</color>
+
+    <color name="yellow_50">#FEFCE8</color>
+    <color name="yellow_200">#FEF08A</color>
+    <color name="yellow_600">#D97706</color>
+    <color name="yellow_800">#92400E</color>
+</resources>

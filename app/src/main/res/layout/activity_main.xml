@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:layout_height="match_parent"
+     android:layout_width="match_parent"
+     android:background="#F9FAFB">
+
+    <com.google.android.material.appbar.AppBarLayout
+         android:layout_height="wrap_content"
+         android:layout_width="match_parent"
+         android:background="@android:color/white"
+         app:elevation="1dp"
+         android:id="@+id/appBarLayout">
+
+        <androidx.appcompat.widget.Toolbar
+             android:layout_height="?attr/actionBarSize"
+             android:layout_width="match_parent"
+             android:paddingEnd="16dp"
+             android:paddingStart="16dp"
+             android:id="@+id/toolbar">
+
+            <LinearLayout
+                 android:layout_height="wrap_content"
+                 android:layout_width="match_parent"
+                 android:gravity="center_vertical"
+                 android:orientation="horizontal">
+
+                <ImageView
+                     android:layout_height="24dp"
+                     android:layout_width="24dp"
+                     android:src="@drawable/ic_alert_circle"
+                     android:contentDescription="@string/alert_icon"
+                    android:id="@+id/ivAlertIcon"
+                    app:tint="#DC2626" />
+
+                <TextView
+                     android:layout_height="wrap_content"
+                     android:layout_width="0dp"
+                     android:textSize="20sp"
+                     android:textColor="#111827"
+                     android:layout_marginStart="12dp"
+                     android:layout_weight="1"
+                     android:id="@+id/tvAppTitle"
+                     android:text="@string/promptchuay"
+                     android:textStyle="bold" />
+
+                <ImageView
+                     android:layout_height="20dp"
+                     android:layout_width="20dp"
+                     android:src="@drawable/ic_wifi"
+                     android:contentDescription="@string/connection_status"
+                    android:id="@+id/ivConnectionStatus"
+                    app:tint="#059669" />
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             android:background="@android:color/white"
+             android:padding="16dp"
+             android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                 android:layout_height="wrap_content"
+                 android:layout_width="0dp"
+                 android:layout_marginEnd="8dp"
+                 app:backgroundTint="#DC2626"
+                 android:textSize="14sp"
+                 app:cornerRadius="8dp"
+                 android:layout_weight="1"
+                 android:id="@+id/btnVictimMode"
+                 android:text="@string/im_victim" />
+
+            <com.google.android.material.button.MaterialButton
+                 android:layout_height="wrap_content"
+                 android:layout_width="0dp"
+                 app:backgroundTint="#E5E7EB"
+                 app:strokeColor="#E5E7EB"
+                 android:textSize="14sp"
+                 app:cornerRadius="8dp"
+                 android:textColor="#374151"
+                 style="@style/Widget.Material3.Button.OutlinedButton"
+                 android:layout_marginStart="8dp"
+                 android:layout_weight="1"
+                 android:id="@+id/btnRescuerMode"
+                 android:text="@string/im_recure" />
+
+        </LinearLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+         android:layout_height="match_parent"
+         android:layout_width="match_parent"
+         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <FrameLayout
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             android:padding="16dp"
+             android:id="@+id/contentContainer">
+
+            <include
+                 layout="@layout/content_victim_mode"
+                 android:visibility="visible"
+                 android:id="@+id/victimModeContent" />
+
+            <include
+                 layout="@layout/content_rescuer_mode"
+                 android:visibility="gone"
+                 android:id="@+id/rescuerModeContent" />
+
+        </FrameLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

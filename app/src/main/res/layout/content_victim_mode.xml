@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- Connection Status Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardConnectionStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:cardBackgroundColor="#ECFDF5"
+        app:strokeColor="#A7F3D0"
+        app:strokeWidth="1dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/ivConnectionIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="2dp"
+                android:src="@drawable/ic_wifi"
+                android:contentDescription="@string/connection_icon"
+                app:tint="#047857" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvConnectionTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/internet_connect"
+                    android:textColor="#111827"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvConnectionDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/card_online_desc"
+                    android:textColor="#4B5563"
+                    android:textSize="14sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Connection Sent Status Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardConnectionSentStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="#ECFDF5"
+        app:strokeColor="#A7F3D0"
+        app:strokeWidth="1dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/ivConnectionSentIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="2dp"
+                android:contentDescription="@string/connection_sent_icon"
+                android:src="@drawable/ic_send"
+                app:tint="#047857" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvConnectionSentTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_status"
+                    android:textColor="#111827"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvConnectionSentDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/card_sent_isondb"
+                    android:textColor="#4B5563"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <!-- SOS Button Container -->
+    <FrameLayout
+        android:id="@+id/sosButtonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Large SOS Button -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardSosButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#DC2626"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp">
+
+
+            <LinearLayout
+                android:id="@+id/btnSendSOS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="64dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/ic_alert_circle"
+                    android:contentDescription="@string/sos_icon"
+                    app:tint="@android:color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/large_button_hint_to_click"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </FrameLayout>
+
+    <!-- Got Help Button Container -->
+    <FrameLayout
+        android:id="@+id/gotHelpButtonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Pan Got Help Button -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardGotHelpButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#DC2626"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp">
+
+
+            <LinearLayout
+                android:id="@+id/btnSendGotHelp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@color/green_600">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/got_help_desc"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:enabled="false"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </FrameLayout>
+
+    <!-- SOS Form (will be shown/hidden) -->
+    <include layout="@layout/form_sos_report"
+        android:id="@+id/sosFormContainer"
+        android:visibility="gone"/>
+
+</LinearLayout>

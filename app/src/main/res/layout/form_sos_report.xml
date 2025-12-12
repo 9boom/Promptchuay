@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    app:strokeColor="#E5E7EB"
+    app:cardElevation="0dp"
+    app:strokeWidth="1dp"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:padding="24dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:textSize="18sp"
+                android:textColor="#111827"
+                android:layout_weight="1"
+                android:text="@string/title_form"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_height="20dp"
+                android:layout_width="20dp"
+                android:src="@drawable/ic_close"
+                android:contentDescription="@string/close_form"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:id="@+id/btnCloseForm"
+                app:tint="#9CA3AF" />
+
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="16dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            android:textColor="#000"
+            android:hint="@string/name_title"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusTopStart="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:id="@+id/etName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="16dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            android:hint="@string/contact_title"
+            app:helperText="เบอร์โทรศัพท์, LINE ID, etc."
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusTopStart="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:inputType="text"
+                android:id="@+id/etContact" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Dropdown สำหรับระดับความรุนแรง -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="16dp"
+            android:hint="@string/level_title"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxBackgroundMode="outline"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+            <AutoCompleteTextView
+                android:id="@+id/etLevel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:textColor="#000" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        
+        <!-- Dropdown สำหรับระดับความรุนแรง -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="16dp"
+            android:hint="@string/type_title"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxBackgroundMode="outline"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+            <AutoCompleteTextView
+                android:id="@+id/etType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:textColor="#000" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="16dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            android:hint="@string/details_title"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusTopStart="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="top|start"
+                android:lines="4"
+                android:inputType="textMultiLine"
+                android:id="@+id/etDetails" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="8dp"
+            app:icon="@drawable/ic_map_pin"
+            app:backgroundTint="#F3F4F6"
+            app:cornerRadius="8dp"
+            app:iconTint="#374151"
+            android:textColor="#374151"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:id="@+id/btnGetLocation"
+            android:text="@string/gps_gps" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone"
+            android:textSize="12sp"
+            android:textColor="#6B7280"
+            android:id="@+id/tvLocationInfo"
+            android:text="@string/gps_position_info" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            app:icon="@drawable/ic_send"
+            app:backgroundTint="#DC2626"
+            android:paddingVertical="12dp"
+            android:textSize="16sp"
+            app:cornerRadius="8dp"
+            android:id="@+id/btnSubmitSOS"
+            android:text="@string/sos_submit_label"
+            app:iconGravity="textStart" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

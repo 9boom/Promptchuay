@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.PromptChuay" parent="Theme.Material3.Light.NoActionBar">
+        <item name="fontFamily">@font/sarabun</item>
+        <item name="android:fontFamily">@font/sarabun</item>
+
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/red_600</item>
+        <item name="colorPrimaryVariant">@color/red_700</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">@color/blue_600</item>
+        <item name="colorSecondaryVariant">@color/blue_700</item>
+        <item name="colorOnSecondary">@android:color/white</item>
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/blue_700</item>
+
+        <!-- Background colors -->
+        <item name="android:windowBackground">@color/gray_900</item>
+        <item name="colorSurface">@color/gray_800</item>
+
+        <!-- Button styles -->
+        <item name="materialButtonStyle">@style/Widget.PromptChuay.Button</item>
+        <item name="textInputStyle">@style/Widget.PromptChuay.TextInputLayout</item>
+    </style>
+</resources>
