@@ -252,7 +252,6 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
-
     private void updateSharedReport() {
         SharedManager.getInstance().getSharedReport().setIsOnDatabase(preferencesManager.report.getIsOnDatabase());
         SharedManager.getInstance().getSharedReport().setId(preferencesManager.report.getId());
