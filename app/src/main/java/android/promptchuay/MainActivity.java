@@ -1075,6 +1075,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void destroy() {
+        exec.shutdown();
         // หยุดการติดตามตำแหน่งเมื่อ Activity ถูกทำลาย
         if (locationLib != null) {
             locationLib.stopLocationService();
