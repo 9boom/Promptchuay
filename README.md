@@ -31,16 +31,16 @@
 
 ### ดาวน์โหลดเวอร์ชันล่าสุด
 
-| ระบบปฏิบัติการ | เวอร์ชัน | ลิงก์ดาวน์โหลด |
-|----------------|----------|----------------|
-| Android | 25.1 | [หน้า Releases บน GitHub](https://github.com/9boom/Promptchuay/releases/tag/android) |
+| ระบบปฏิบัติการ | เวอร์ชัน | ลิงก์ดาวน์โหลด                                                                     |
+|----------------|----------|------------------------------------------------------------------------------------|
+| Android | 25.1 | [หน้า Releases บน GitHub](https://github.com/9boom/Promptchuay/releases/tag/v25.1) |
 
 ---
 
 <a id="ฟีเจอร์และข้อมูลแอป"></a>
 ## ⭐ ฟีเจอร์และข้อมูลแอป
 
-ดูรายละเอียดฟีเจอร์ทั้งหมดได้ที่ [หน้า Releases บน GitHub](https://github.com/9boom/Promptchuay/releases/tag/android)
+ดูรายละเอียดฟีเจอร์ทั้งหมดได้ที่ [หน้า Releases บน GitHub](https://github.com/9boom/Promptchuay/releases/tag/v25.1)
 
 ---
 <a id="สำหรับผู้พัฒนา"></a>
