@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity
     private View btnViewAllMap;
     private View sosFormContainer;
 
+    // Sent status card
     private MaterialCardView cardConnectionSentStatus;
     private ImageView ivConnectionSentIcon;
     private TextView tvConnectionSentTitle;
@@ -143,12 +144,12 @@ public class MainActivity extends AppCompatActivity
         };
 
         type = new String[]{
-                "แผ่นดินไหว 🌍",
-                "น้ำท่วม 🏠",
-                "สึนามิ 🌊",
-                "ถูกลักพาตัว 🚨",
-                "เหตุกราดยิง 🔫",
-                "อุบัติเหตุ 💥",
+                "แผ่นดินไหว",
+                "น้ำท่วม",
+                "สึนามิ",
+                "ถูกลักพาตัว",
+                "เหตุกราดยิง",
+                "อุบัติเหตุ",
                 "อื่นๆ"
         };
 
@@ -157,10 +158,10 @@ public class MainActivity extends AppCompatActivity
         // Setup listeners
         setupListeners();
 
-        //
+        // ดำเนินการต่างๆ หากผู้ใช้เคยรายงานสำเร็จแล้วแล้ว
         checkForReportAvalible();
 
-        // Load sample data
+        // โหลดรายงานทั้งหมดจากฐานข้อมูลครั้งแรก
         startupLoadReportsList();
 
         // Setup RecyclerView
@@ -173,6 +174,7 @@ public class MainActivity extends AppCompatActivity
         // Check for saved location when app starts
         checkSavedLocation();
 
+        // จัดการ Foreground
         initializeNetworkStatus();
         checkConnectionSentStatusAndRecognize();
         startNetworkMonitorService();
@@ -190,6 +192,8 @@ public class MainActivity extends AppCompatActivity
 
     private void checkConnectionSentStatusAndRecognize() {
         if (isOnline) {
+            // ถ้าตอนนี้อุปกรณ์นี้เชื่อมต่ออินเทอร์เน็ต ให้ไปเช็คในฐานข้อมูลว่า report id ในเครื่องนี้ มีในฐานข้อมูลไหม
+            // ถ้ามีแปลว่ารายงานของผู้ใช้ิยู่ในฐานข้อมูลจริง และจะอัปเดต Connection Sent Status Card
             firestoreManager.getReport(
                     report -> {
                         if (report != null) {
@@ -199,12 +203,13 @@ public class MainActivity extends AppCompatActivity
                         }
                     },
                     e -> {
-                        //Toast.makeText(MainActivity.this, "เกิดข้อผิดพลาด: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "ไม่พบรายงาน: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         updateConnectionSentStatus(false);
 
                     }
             );
         } else {
+            // ถ้าออฟไลน์ จะใช้ผลลัพธ์ก่อนหน้านี้ที่บันทึกแทน
             if (SharedManager.getInstance().getSharedReport().getIsOnDatabase()) {
                 updateConnectionSentStatus(true);
             } else {
@@ -270,10 +275,14 @@ public class MainActivity extends AppCompatActivity
 
     private void checkForReportAvalible() {
         if (preferencesManager.report.isReportOnPreferences()) {
+            // ถ้าผู้ใช้ report คร้งก่อนแล้ว จะทำการ อัปเดต SharedManager จาก preferences เอง
+            // และจะทำการอัปดด form จาก SharedManaher ต่อ
+            // และจะโชว์หน้า form ให้กรอกรายงานทันทีเลย
             updateSharedReport();
             updateForm();
             showSOSForm();
         } else {
+            // ถ้าผู้ใช้ไม่เคยรายงาน ก็จะขึ้นหน้าแดงๆ ให้กดก่อนเพื่อแสดงหน้า form รายงาน
             hideSOSForm();
         }
     }
@@ -297,6 +306,8 @@ public class MainActivity extends AppCompatActivity
         sosFormContainer.setVisibility(View.VISIBLE);
         showGotHelpBtn();
         if (preferencesManager.report.isReportOnPreferences()) {
+            // บางครั้งผู้ใช้จะเปิด form แต่ยังไม่เคยรายงาน ดังนั้นต้องเช็คเงื่อนไขนี้ด้วย ไม่งั้น
+            // update form จะไม่มีอะไรให้ update
             updateForm();
         }
     }
@@ -305,6 +316,7 @@ public class MainActivity extends AppCompatActivity
         sosButtonContainer.setVisibility(View.VISIBLE);
         sosFormContainer.setVisibility(View.GONE);
         hideGotHelpBtn();
+        // เวลาปิด form ก็เคลียด้วย
         clearForm();
     }
 
@@ -895,27 +907,32 @@ public class MainActivity extends AppCompatActivity
         SharedManager.getInstance().getSharedReport().setType(type);
         SharedManager.getInstance().getSharedReport().setQueued(!isOnline);
 
+        // ดองไว้
         //reportsAdapter.notifyItemInserted(0);
         //updateReportsHeader();
 
         if (!SharedManager.getInstance().getSharedReport().getQueued()) {
+            // queued ถ้าเป็น true แปลว่าผู้ใช้ส่งแบบ form แต่ไม่มีอินเทอร์เน็ต ในกรณีงื่อนไขนี้เช็คว่า
+            // ผู้ใช้ส่งแบบ form แบบมีเน็ต
+            // จะบันทึกลง preferences และอัปขึ้น firestore database ปกติ
             storeAndSaveReport();
+            // set queued false อีกรอบเพื่อความสบายใจ จริงๆไม่จะเป็น
             SharedManager.getInstance().getSharedReport().setQueued(false);
         } else {
+            // ใน scope เงื่อนไขนี้ แปลว่า get queued เป็น true จะต้องส่งรายงานอีกทีเมื่ออินเทอร์เน็ตกลับมา
+            // การส่งจะไม่ใช่หน้าที่ของฟังชันก์ storeAndSaveReport() อีกต่อไปแต่คือ NetworkMonitorService
+            // (Foreground service)
             SharedManager.getInstance().getSharedReport().setQueued(true);
+            // get queued เป็น true เพื่อเข้าเงื่อนไขใน NetworkMonitorService
             Toast.makeText(this, "ไม่พบอินเทอร์เน็ต ระบบจะส่งอัตโนมัติเมื่อการเชื่อมต่อกลับมา", Toast.LENGTH_SHORT).show();
 
-//                if (preferencesManager.report.storageReport()) {
-//                    Toast.makeText(this, "ไม่พบอินเทอร์เน็ต ระบบจะส่งอัตโนมัติเมื่อการเชื่อมต่อกลับมา", Toast.LENGTH_SHORT).show();
-//                    hideSOSForm();
-//                } else {
-//                    Toast.makeText(this, "เกิดข้อผิดพลาดขณะบันทึกข้อมูลลง SharedPreferences", Toast.LENGTH_SHORT).show();
-//                }
         }
     }
 
     private void storeAndSaveReport() {
+        // ฟังชันก์นี้สามารถทำได้ทั้ง สร้างรายงาน และอัปเดตรายงาน ลงฐานข้อมูล
         if (!preferencesManager.report.isReportOnPreferences()) {
+            // ถ้ายังไม่เคยรายงานแปลว่าต้องสร้าง รายงาน ใหม่ลงฐานข้อมูล
             firestoreManager.createReport(
                     reportId -> {
                         Toast.makeText(this, "สร้างรีพอร์ตสำเร็จ: " + reportId, Toast.LENGTH_SHORT).show();
@@ -925,6 +942,7 @@ public class MainActivity extends AppCompatActivity
                     }
             );
         } else if (preferencesManager.report.isReportOnPreferences()) {
+            // ถ้าเคยรายงานแล้ว ต้องอัปเดต ไม่ใช่สร้าง
             firestoreManager.updateReport(
                     reportId -> {
                         Toast.makeText(this, "อัพเดทรีพอร์ตสำเร็จ", Toast.LENGTH_SHORT).show();
@@ -935,6 +953,10 @@ public class MainActivity extends AppCompatActivity
             );
         }
 
+        // ปิดท้ายด้วย การบันทึกลง preferences เพื่อโหลดข้อมูลเดิมใหม่แม้ปิดแอปได้ในอนาคต
+        // ต้องทำขั้นตอนนี้ตอนท้าย เพราะ ในบางกระบวนการของ FirestoreManager และการเช็คเงื่อนไข
+        // มันมีการ set shared report id หลังจาก createReport เลยต้อง preferences storageReport
+        // หลังจากนั้น
         if (preferencesManager.report.storageReport()) {
             Toast.makeText(this, "ขอความช่วยเหลือสำเร็จ", Toast.LENGTH_SHORT).show();
             hideSOSForm();

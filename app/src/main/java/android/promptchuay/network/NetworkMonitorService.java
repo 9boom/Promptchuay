@@ -28,7 +28,7 @@ import java.util.concurrent.Executors;
 
 public class NetworkMonitorService extends Service {
     /*
-    Foreground service ในโปรเจคนี้ผมเอามาใช้เพื่อทำ callback ว่าปัจจุบันอุปกรณ์นี้เชื่อมต่ออินเทอร์เน็ตอยู่
+    Foreground service เพื่อทำ callback ว่าปัจจุบันอุปกรณ์นี้เชื่อมต่ออินเทอร์เน็ตอยู่
     เอามาใช้ประโยชน์ใน MainActivity แต่ถ้าไม่มีเน็ต จะใช้เป็นตัวส่งแบบฟอร์มอัตโนมัติเมื่ออินเทอร์เน็จจะกลับมา
     */
     private ConnectivityManager connectivityManager;
@@ -106,6 +106,8 @@ public class NetworkMonitorService extends Service {
         /* เนื่องจากตอนที่ผู้ใช้กด submit form ตอนที่ไม่มีอินเทอร์เน็ตแล้วทำให้ getQueued เป็น true
         ฟังชันก์นี้จะทำงานทันทีเมื่ออินเทอร์เน็ตกลับมาอีกรอบ
         */
+
+        //หลักการเหมือนฟังชันก์ storeAndSaveReport ใน MainActivity เลย แต่เรามาทำใน Foreground
         if (SharedManager.getInstance().getSharedReport().getQueued()) {
             if (!preferenceManager.report.isReportOnPreferences()) {
                 // สร้าง report ใหม่
