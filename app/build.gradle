@@ -10,10 +10,17 @@ android {
     }
 
     defaultConfig {
+        def localProperties = new Properties()
+        def localPropertiesFiles = rootProject.file("local.properties")
+        if (localPropertiesFiles.exists()){
+            localPropertiesFiles.withInputStream {localProperties.load(it)}
+        }
+        def mapsApiKey = localProperties.getProperty("MAPS_API_KEY") ?: "KEY_NOT_FOUND"
+        manifestPlaceholders = [MAPS_API_KEY_PLACE_HOLDERS: mapsApiKey]
         applicationId "android.promptchuay"
         minSdk 24
         targetSdk 36
-        versionCode 251
+        versionCode 2501
         versionName "25.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
