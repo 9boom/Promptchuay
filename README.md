@@ -58,13 +58,8 @@
 #### 2. Google Maps API Key
 จำเป็นต้องมีคีย์ API สำหรับใช้งาน Google Maps
 1. สมัครและสร้างคีย์ได้ที่ [Google Cloud Platform](https://cloud.google.com/maps-platform)
-2. แทนที่ `GOOGLE_MAP_API_KEY_HERE` ในไฟล์ `AndroidManifest.xml` ด้วยคีย์ที่ได้
-
-```xml
-<meta-data
-    android:name="com.google.android.geo.API_KEY"
-    android:value="GOOGLE_MAP_API_KEY_HERE" />
-```
+2. แก้ไขไฟล์ชื่อ `local.properties` (ถ้าไม่มีให้สร้างและวางที่ root project) จากนั้นให้เพิ่ม `MAPS_API_KEY=MAPS_API_KEY_VALUE`
+3. แล้วให้แทนที่ `MAPS_API_KEY_VALUE` ด้วยคีย์จริงของคุณที่ได้จากขั้นตอนแรก
 
 ---
 <a id="สนับสนุน"></a>
