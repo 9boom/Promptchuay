@@ -1094,7 +1094,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-        initializeNetworkStatus();
+        //ทำให้แอปช้าลงเมื่อกดออกจากหน้า google map
+        //แยกออกจาก Main Thread ในอนาคต
+        //initializeNetworkStatus();
         checkConnectionSentStatusAndRecognize();
     }
 
