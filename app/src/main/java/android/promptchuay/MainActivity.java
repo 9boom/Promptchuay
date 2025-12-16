@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity
     private ReportsAdapter reportsAdapter;
 
     // Location
-    private GPSLocationService locationLib;
+    private GPSLocationService locationService;
     private boolean isLocationRequestInProgress = false;
 
     // Data
@@ -132,10 +132,12 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         // Initialize
-        locationLib = new GPSLocationService(this);
+        locationService = new GPSLocationService(this);
         preferencesManager = new PreferenceManager(this);
         firestoreManager = FirestoreManager.getInstance();
         preferencesManager.report.setQueued(false);
+
+        requestLocationPermissions();
 
         severityLevels = new String[]{
                 "🟢 ต่ำ - ไม่เร่งด่วน",
@@ -180,6 +182,23 @@ public class MainActivity extends AppCompatActivity
         startNetworkMonitorService();
         NetworkStateManager.getInstance().registerCallback(this);
 
+    }
+
+    private void requestLocationPermissions(){
+        // Check that gps is allowed first
+        // ตรวจสอบ permission
+        if (!locationService.hasLocationPermission()) {
+            locationService.requestLocationPermission(this);
+            // จะดำเนินการต่อใน onRequestPermissionsResult
+            return;
+        }
+
+        // ตรวจสอบ GPS
+        if (!locationService.isLocationEnabled()) {
+            locationService.requestEnableGPS(this);
+            // จะดำเนินการต่อใน onActivityResult
+            return;
+        }
     }
 
     private void initializeNetworkStatus() {
@@ -369,7 +388,7 @@ public class MainActivity extends AppCompatActivity
 
 
         // ตั้งค่า listener
-        locationLib.setLocationListener(
+        locationService.setLocationListener(
                 new GPSLocationService.LocationListener() {
                     @Override
                     public void onLocationReceived(android.location.Location location) {
@@ -377,7 +396,7 @@ public class MainActivity extends AppCompatActivity
                                 () -> {
                                     isLocationRequestInProgress = false;
                                     btnGetLocation.setEnabled(true);
-                                    locationLib.stopLocationService(); // หยุด service
+                                    locationService.stopLocationService(); // หยุด service
 
                                     if (location != null) {
                                         currentLocation =
@@ -444,22 +463,10 @@ public class MainActivity extends AppCompatActivity
                     }
                 });
 
-        // ตรวจสอบ permission
-        if (!locationLib.hasLocationPermission()) {
-            locationLib.requestLocationPermission(this);
-            // จะดำเนินการต่อใน onRequestPermissionsResult
-            return;
-        }
-
-        // ตรวจสอบ GPS
-        if (!locationLib.isLocationEnabled()) {
-            locationLib.requestEnableGPS(this);
-            // จะดำเนินการต่อใน onActivityResult
-            return;
-        }
+        requestLocationPermissions();
 
         // ทุกอย่างพร้อม เริ่มดึงตำแหน่ง
-        locationLib.startLocationService();
+        locationService.startLocationService();
     }
 
     private void initializeViews() {
@@ -818,7 +825,7 @@ public class MainActivity extends AppCompatActivity
 
     private void useSavedLocation() {
         // ลองใช้ตำแหน่งที่บันทึกไว้ใน SharedPreferences
-        android.location.Location savedLocation = locationLib.getLastLocationFromPrefs();
+        android.location.Location savedLocation = locationService.getLastLocationFromPrefs();
 
         if (savedLocation != null) {
             currentLocation =
@@ -840,8 +847,8 @@ public class MainActivity extends AppCompatActivity
 
     private void checkSavedLocation() {
         // ตรวจสอบว่ามีตำแหน่งบันทึกไว้หรือไม่
-        if (locationLib.hasSavedLocation()) {
-            android.location.Location savedLocation = locationLib.getLastLocationFromPrefs();
+        if (locationService.hasSavedLocation()) {
+            android.location.Location savedLocation = locationService.getLastLocationFromPrefs();
             if (savedLocation != null) {
                 currentLocation =
                         new Location(
@@ -1042,11 +1049,11 @@ public class MainActivity extends AppCompatActivity
                         .show();
 
                 // ตรวจสอบ GPS
-                if (!locationLib.isLocationEnabled()) {
-                    locationLib.requestEnableGPS(this);
+                if (!locationService.isLocationEnabled()) {
+                    locationService.requestEnableGPS(this);
                 } else {
                     // เริ่มดึงตำแหน่ง
-                    locationLib.startLocationService();
+                    locationService.startLocationService();
                 }
             } else {
                 isLocationRequestInProgress = false;
@@ -1064,7 +1071,7 @@ public class MainActivity extends AppCompatActivity
         if (requestCode == GPSLocationService.REQUEST_CHECK_SETTINGS) {
             if (resultCode == RESULT_OK) {
                 Toast.makeText(this, "GPS เปิดแล้ว กำลังดึงตำแหน่ง...", Toast.LENGTH_SHORT).show();
-                locationLib.startLocationService();
+                locationService.startLocationService();
             } else {
                 isLocationRequestInProgress = false;
                 btnGetLocation.setEnabled(true);
@@ -1077,8 +1084,8 @@ public class MainActivity extends AppCompatActivity
     public void destroy() {
         exec.shutdown();
         // หยุดการติดตามตำแหน่งเมื่อ Activity ถูกทำลาย
-        if (locationLib != null) {
-            locationLib.stopLocationService();
+        if (locationService != null) {
+            locationService.stopLocationService();
         }
 
         firestoreManager.removeRealtimeListener();
